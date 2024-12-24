@@ -1,0 +1,132 @@
+﻿@page "/"
+<PageTitle>GamesReview</PageTitle>
+
+@using GamesReview.Data
+@inject IConfiguration Config;
+@code {
+    private AppDBContext _context;
+    public List<Game> Games, TopGames, NewGames;
+    protected override Task OnInitializedAsync()
+    {
+        _context = new AppDBContext(Config);
+
+        if (_context.Games == null)
+        {
+            Games = new List<Game>();
+            return Task.CompletedTask;
+        }
+        else
+        {
+
+            TopGames = _context.GetTheBest();
+            NewGames = _context.GetLatestGames();
+            Games = _context.Games.ToList();
+        }
+
+        return Task.CompletedTask;
+    }
+}
+<head>
+    <title>Game Review</title>
+    <link rel="stylesheet" href="css/index_style.css" />
+</head>
+
+<body>
+
+    <div class="content">
+        <img class="GR" src="./imgs/MainLogo.svg" alt="">
+        <div class="top-game">
+            <p class="top-month">Топ игр за месяц</p>
+        </div>
+        <div class="TopGames">
+
+            @foreach (var topgame in TopGames)
+            {
+                <div>
+                    <img src="imgs/games/@topgame.ID/CapsuleView.jpg" alt="">
+                    <p class="game-text">@topgame.Name</p>
+                    <div class="marks">
+                        <p>Оценка:</p>
+                        <p>@topgame.Rate</p>
+                        <img class="star" src="imgs/star_small.svg" alt="">
+                    </div>
+                </div>
+            }
+
+
+        </div>
+
+
+
+
+        <div class="block-game">
+
+            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+
+                    @for (int i = 1; i < Games.Count; i++)
+                    {
+                        <button class="" type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="@Games[i].Name"></button>
+                    }
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="10000">
+                        <img src="imgs/games/@Games[0].ID/GameImage.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>@Games[0].Name</h5>
+                            <div class="GenreInfoList">
+                                @for (int genreI = 0; genreI < Games[0].Genres.Length && genreI < 5; genreI++)
+                                {
+                                    <p class="GenreInfo">@Games[0].Genres[genreI]</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @for (int i = 1; i < Games.Count; i++)
+                    {
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="/imgs/games/@Games[i].ID/GameImage.jpg" class="d-block w-100" alt="">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>@Games[i].Name</h5>
+                                <div class="GenreInfoList">
+                                    @for (int genreI = 0; genreI < Games[i].Genres.Length && genreI < 5; genreI++)
+                                    {
+                                        <p class="GenreInfo">@Games[i].Genres[genreI]</p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+
+        </div>
+
+        <h2 class="new">Новинки</h2>
+
+
+        <div class="newGamesClass">
+            @foreach (Game game in NewGames)
+            {
+                <a class="new-game">
+                    <p>Release Date:@game.ReleaseDate.ToString("dd-MM-yyyy")</p>
+                    <img src="/imgs/games/@game.ID/GameImage.jpg" />
+                </a>
+            }
+        </div>
+
+
+    </div>
+</body>

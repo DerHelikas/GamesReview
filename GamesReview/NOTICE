@@ -1,0 +1,18 @@
+/*
+
+	This project uses next libraries:
+
+	Microsoft ownership (MIT License):
+		-|EntityFramework
+		-|EntityFramework.Tools 
+		-|
+		-|Other .NET 8 libraries
+		
+
+	Postgre SQL (PostgreSQL incense):
+		-|PostrgreSQL for EntityFramework
+
+	
+	Waybury ( MIT License and SIL Font license):
+	Open-Iconic 
+*/

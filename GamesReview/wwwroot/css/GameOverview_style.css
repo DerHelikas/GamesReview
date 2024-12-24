@@ -1,0 +1,181 @@
+﻿
+
+/* HEADER */
+header {
+    color: #fff;
+}
+
+h2{
+    text-align:center;
+}
+
+.logo-nav {
+    display: flex;
+    width: 940px;
+    justify-content: space-around;
+}
+
+.search-but {
+    display: flex;
+    margin-right: 30px;
+}
+
+    .search-but form input {
+        width: 230px;
+        background: #303030;
+        padding: 0px 50px;
+        font-size: 17px;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        margin: 0;
+    }
+
+form {
+    position: relative;
+    display: flex;
+    margin-right: 40px;
+}
+
+.search-but form button {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    border: none;
+    cursor: pointer;
+    background: url("./search.png") no-repeat center;
+    margin: 3px 0 0 10px;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    background-color: #272727;
+    margin: 0;
+    padding: 15px 0;
+}
+
+    ul a {
+        color: #D6D6D6;
+        font-size: 23px;
+        margin: 0;
+        margin-top: 7px;
+        font-family: "Roboto Medium";
+        text-decoration: none;
+    }
+
+.logo {
+    width: 97px;
+    height: 45px;
+    margin-top: 2px;
+}
+
+.lk-but {
+    padding: 0px 30px;
+    color: #FFFFFF;
+    font-size: 20px;
+    background-color: #0AB1A3;
+    border-radius: 10px;
+    border: none;
+    font-family: "Roboto Medium";
+    cursor: pointer;
+}
+
+    .lk-but:hover {
+        background-color: #17736b;
+        transition: 0.5s;
+    }
+
+.filter-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 40px 0;
+}
+/* MISC + Header */
+.FilterButton {
+    transition: ease-in-out;
+    transition-duration: 200ms;
+    max-width: max-content;
+    min-width: 60px;
+    height: 40px;
+    padding: 4px;
+    background-color: #525252;
+    color: #909090;
+    border: 0;
+    border-radius: 10px;
+    opacity: 0.8;
+}
+
+    .FilterButton:hover {
+        transition: ease-in-out;
+        transition-duration: 200ms;
+        opacity: 1;
+    }
+
+    .FilterButton.active {
+        color: #CCC !important;
+        background-color: #444;
+        opacity: 1;
+    }
+
+/* Games holder */
+
+.RateLess {
+    opacity: 0.4;
+}
+
+.FiltredGamesSet {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.FiltredGroup {
+    display: grid;
+    grid-template-rows: repeat(3,300px);
+    grid-template-columns: repeat(3,200px);
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+.GameHolder {
+    border-radius: 20px;
+    overflow: hidden;
+
+    position: relative;
+
+    display: flex;
+    justify-content:center;
+    align-items:flex-end;
+
+    cursor: pointer;
+}
+
+.GameHolder p {
+    position: absolute;
+
+    color: #fff;
+    font-family: "Roboto Medium";
+
+    text-align: center;
+}
+.GameHolder p > span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.GameHolder p > span > img{
+    width: 15px;
+    height: 20px;
+}
+.GameHolder:hover{
+    opacity: 0.4;
+}
+
+.FiltredGroup img {
+    width: 100%;
+    height: 100%;
+}

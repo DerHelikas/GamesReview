@@ -1,0 +1,102 @@
+﻿.MainHolder {
+
+
+    width: 100%;
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    height: 500px;
+}
+
+.GameInfo {
+    font-family: "Roboto Bold";
+
+    display: grid;
+    grid-template-rows: 20% 1fr 10%;
+    justify-content: center;
+    text-align: center;
+    margin: 50px;
+    padding: 30px;
+    border-radius: 20px;
+    color: #fff;
+    background-color: #303030;
+    cursor: pointer;
+}
+
+.GameInfo img {
+     border-radius: 20px;
+}
+
+.Reviews {
+
+    display: grid;
+    grid-template-rows: 15% 1fr 5%;
+
+    color: #fff;
+    font-family: "Roboto Regular";
+
+}
+.TotalRate {
+    font-size: 40px;
+    text-align: center;
+}
+
+.ReviewsHolder{
+    height: 90%;
+    overflow-y: scroll;
+}
+
+
+.Review {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-flow: column wrap;
+    background-color: #303030;
+    border-radius: 20px;
+}
+
+.ReviewCaption{
+    display: grid;
+    grid-template-columns: 10% 1fr 10%;
+
+}
+
+.RateStartsHolder{
+    display: flex;
+    flex-flow: row wrap;
+
+    font-size: 30px;
+
+    justify-content: center;
+    align-items:  center;
+}
+
+.RateStartsHolder > div {
+    display: flex;
+    align-items: center;
+}
+
+.RateStartsHolder > div img{
+    height: 15px;
+    width: 15px;
+}
+
+.ReviewBody {
+    background-color: #404040;
+    border-radius: 10px;
+    padding:10px;
+}
+
+
+.WriteReview {
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    background-color: #202020;
+    color: #fff;
+    margin: 0 auto;
+    padding: 20px;
+}

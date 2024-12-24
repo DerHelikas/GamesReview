@@ -1,0 +1,31 @@
+﻿
+
+body {
+    min-height: 100vh;
+}
+
+.page {
+    display: grid;
+    grid-template-rows: 1fr 80% 1fr;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    flex-flow: column wrap;
+}
+
+main > * {
+    height: max-content;
+    text-align: center;
+    color: #fff;
+}
+
+.MessageHolder {
+    margin: 40px 0;
+}
+
+
+footer {
+    clear: both;
+}

@@ -1,0 +1,168 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+p {
+    margin: 0 !important;
+}
+/* Shared HEADER */
+
+body {
+    background-color: #272727 !important;
+
+    width: 90%;
+    margin: 0 auto !important;
+}
+
+
+.logo-nav {
+    display: flex;
+    width: 940px;
+    justify-content: space-around;
+}
+
+.search-but {
+    display: flex;
+    margin-right: 30px;
+}
+
+    .search-but form input {
+        width: 230px;
+        background: #303030;
+        padding: 0px 50px;
+        font-size: 17px;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        margin: 0;
+    }
+
+form {
+    position: relative;
+    display: flex;
+    margin-right: 40px;
+}
+
+.search-but form button {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    border: none;
+    cursor: pointer;
+    background: url("./search.png") no-repeat center;
+    margin: 3px 0 0 10px;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    background-color: #272727;
+    margin: 0;
+    padding: 15px 0;
+}
+
+    ul a {
+        color: #D6D6D6;
+        font-size: 23px;
+        margin: 0;
+        margin-top: 7px;
+        font-family: "Roboto Medium";
+        text-decoration: none;
+    }
+
+.logo {
+    width: 97px;
+    height: 45px;
+    margin-top: 2px;
+}
+
+.lk-but {
+    padding: 0px 30px;
+    color: #FFFFFF;
+    font-size: 20px;
+    background-color: #0AB1A3;
+    border-radius: 10px;
+    border: none;
+    font-family: "Roboto Medium";
+    cursor: pointer;
+}
+
+    .lk-but:hover {
+        background-color: #17736b;
+        transition: 0.5s;
+   }
+
+
+/* Shared FOOTER */
+footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: #272727;
+    margin: 0;
+    margin-top: 100px;
+    padding: 40px 0;
+}
+
+.title-foot {
+    color: #D6D6D6;
+    font-family: "Roboto Medium";
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.subtitle-foot {
+    color: #909090;
+    font-family: "Roboto Medium";
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.last-subtitle-foot {
+    color: #909090;
+    font-family: "Roboto Medium";
+    font-size: 20px;
+    text-align: end;
+    padding-top: 110px;
+    line-height: 0px;
+}
+
+
+
+/* MSIC */
+
+.GenreInfoList{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.GenreInfo {
+    width: max-content;
+    height: 30px;
+    background-color: #4444;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 4px;
+
+    padding: 4px;
+    margin: 0 6px;
+}
+
+.breadcrumb {
+    font-size: 15px;
+    width: max-content;
+    display: flex;
+    flex-flow: row;
+    font-family: "Roboto Medium";
+}
+.breadcrumb * {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.breadcrumb *:hover{
+    text-decoration: none;
+    color: #AAA;
+}

@@ -1,0 +1,77 @@
+﻿@inherits LayoutComponentBase
+
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/site_shared.css" />
+    <link rel="stylesheet" href="/css/fonts_shared.css" />
+
+    <link rel="icon" href="/imgs/logo.svg" />
+
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" />
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery-3.7.1.js"></script>
+</head>
+
+<div class="page">
+
+    <header>
+        <nav>
+            <ul>
+                <div class="logo-nav">
+                    <a href="/"><img class="logo" src="/imgs/logo.svg" alt=""></a>
+                    <a href="/GameOverview">Обзоры игр</a>
+                    <a href="../Feedback/feedback.html">Отзывы</a>
+                    <a href="#">О нас</a>
+                </div>
+                <div class="search-but">
+                    <form action="">
+                        <button type="submit"></button>
+                        <input placeholder="Поиск..." type="search">
+                    </form>
+                    <button class="lk-but">Личный кабинет</button>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        @Body
+    </main>
+
+
+    <footer>
+        <img class="logo" src="/imgs/logo.svg" alt="">
+        <div>
+            <a class="title-foot" href="../LandPage/index.html">Главная</a>
+            <p class="subtitle-foot">Топ игр за месяц</p>
+            <p class="subtitle-foot">Рекомендуемое</p>
+            <p class="subtitle-foot">Новинки</p>
+        </div>
+        <div>
+            <a class="title-foot" href="#">Обзоры игр</a>
+            <p class="subtitle-foot">Все</p>
+            <p class="subtitle-foot">Подборки игр</p>
+            <p class="subtitle-foot">Обзоры</p>
+        </div>
+        <div>
+            <a class="title-foot" href="../Feedback/feedback.html">Отзывы</a>
+            <p class="subtitle-foot">Все</p>
+            <p class="subtitle-foot">По дате</p>
+            <p class="subtitle-foot">По полезности</p>
+        </div>
+        <div>
+            <a class="title-foot" href="#">О нас</a>
+            <p class="subtitle-foot">Контакты</p>
+        </div>
+        <div>
+            <p class="last-subtitle-foot">© 2024</p>
+            <p class="subtitle-foot">GamesReview.ru</p>
+        </div>
+    </footer>
+
+</div>

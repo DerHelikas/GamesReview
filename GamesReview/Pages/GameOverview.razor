@@ -1,0 +1,104 @@
+﻿@page "/GameOverview"
+
+
+@using GamesReview.Data
+@inject IConfiguration Config;
+
+@code {
+    private AppDBContext _context;
+    public List<Game> AllGames, WithReview, WithoutReview;
+    protected override Task OnInitializedAsync()
+    {
+
+        _context = new AppDBContext(Config);
+        AllGames = _context.Games.ToList();
+        WithoutReview = _context.GetGamesWithoutRate();
+        WithReview = _context.GetGamesOnlyWithRate();
+
+        return Task.CompletedTask;
+    }
+
+
+}
+
+<head>
+    <link rel="stylesheet" href="/css/GameOverview_style.css" />
+    <title>All reviews</title>
+
+
+    <script src="js/GameReview_DOM.js"></script>
+</head>
+
+<header>
+    <div class="breadcrumb-wrapper">
+        <div class="breadcrumb"><a href="/">Главная </a><p> > </p><p> Обзоры игр</p></div>
+        <div class="share-text">
+            <img src="imgs/ShareIcon.svg" />
+            Поделиться
+        </div>
+    </div>
+    <div class="mt-3 breadcrumb-wrapper">
+        <h2 class="main-title">Обзоры игр</h2>
+
+    </div>
+</header>
+
+
+<main>
+    <div class="filter-buttons">
+        <button id="AllGamesFilterButton" class="FilterButton active">Все</button>
+        <button id="GamesWithReviews" class="FilterButton">Есть обзоры</button>
+        <button id="GamesWithoutReviews" class="FilterButton">Ещё нет оценки</button>
+    </div>
+
+    <div class="FiltredGamesSet">
+        <div class="FiltredGroup" id="All">
+
+            @foreach (Game game in AllGames)
+            {
+
+                <a class="GameHolder" href="Game/@game.ID">
+                    @if (game.Rate != 0)
+                    {
+                        <p>Отзывов: @game.ReviewsCount<br /><span>@game.Rate <img src="imgs/star_small.svg" /></span></p>
+                        <img src="imgs/games/@game.ID/CapsuleView.jpg" />
+                    }
+                    else
+                    {
+                        <p>Нет отзывов<br />-</p>
+                        <img class="RateLess" src="imgs/games/@game.ID/CapsuleView.jpg" />
+                    }
+                </a>
+            }
+
+        </div>
+
+        <div style="display: none" class="FiltredGroup" id="WithReview">
+
+            @foreach (Game game in WithReview)
+            {
+                <a class="GameHolder" href="Game/@game.ID">
+                    <p>Отзывов: @game.ReviewsCount<br /><span>@game.Rate <img src="imgs/star_small.svg" /></span></p>
+                    <img src="imgs/games/@game.ID/CapsuleView.jpg" />
+                </a>
+            }
+
+        </div>
+
+        <div style="display: none" class="FiltredGroup" id="WithoutRaview">
+
+            @foreach (Game game in WithoutReview)
+            {
+                <a class="GameHolder" href="Game/@game.ID">
+                    <p>Нет отзывов</p>
+                    <img class="RateLess" src="imgs/games/@game.ID/CapsuleView.jpg" />
+                </a>
+            }
+
+        </div>
+    </div>
+
+</main>
+
+<div class="FiltredGames">
+</div>

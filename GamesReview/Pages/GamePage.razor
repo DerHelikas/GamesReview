@@ -1,0 +1,92 @@
+﻿@page "/Game/{GameID?}"
+
+<PageTitle>Game Review</PageTitle>
+
+@using GamesReview.Data
+@inject IConfiguration Config;
+@inject NavigationManager NavMan;
+@code {
+    [Parameter]
+    public string GameID { get; set; }
+
+    private AppDBContext _context;
+    public Game Game;
+    public List<ReviewClass> reviews;
+
+    public string SpecialCommentary = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _context = new AppDBContext(Config);
+
+        if (!_context.Games.ToList().Exists(elm => elm.ID == GameID))
+        {
+            NavMan.NavigateTo($"/404/GameNotFound_{GameID}");
+            await Task.CompletedTask;
+        }
+
+        Game = _context.Games.ToList().Find(elm => elm.ID == GameID) ?? new Game();
+        reviews = _context.GetAllGameReview(Game.ID);
+
+        if (reviews != null && reviews.Count != 0)
+            Game.CalculatedRate = (short)System.Math.Round((double)(reviews.Sum(sm => sm.Rate) / reviews.Count));
+        else{
+            SpecialCommentary = "Ой. А коментариев нет или они не подгрузились. Автоматическое опредиление оценки не доступно.";
+            Game.CalculatedRate = 0;
+        }
+    }
+}
+
+
+<head>
+    <title>@Game.Name Reviews</title>
+    <link rel="stylesheet" href="/css/GamePage_style.css" />
+</head>
+
+<main>
+
+    <div class="MainHolder">
+        <div class="GameInfo">
+            <h2>@Game.Name</h2>
+            <img src="/imgs/games/@Game.ID/GameImage.jpg" />
+            <h2>@Game.ReleaseDate.ToString("dd-MM-yyyy")</h2>
+        </div>
+
+        <div class="Reviews">
+
+            <div class="TotalRate">Общая оценка: @Game.CalculatedRate</div>
+            <div class="ReviewsHolder">
+
+                @if(SpecialCommentary != string.Empty){
+                    <h3>@SpecialCommentary</h3>
+                }
+
+                @for (int i = 0; i < reviews.Count; i++)
+                {
+                    <div class="Review">
+                        <div class="ReviewCaption">
+                            <p>#@i</p>
+                            <div class="RateStartsHolder">
+                                <p>@reviews[i].Rate</p>
+                                <div>
+                                    @for (int RewI = 0; RewI < reviews[i].Rate && RewI < 5; RewI++)
+                                    {
+                                        <img src="/imgs/star_small.svg" />
+                                    }
+                                </div>
+                            </div>
+                            <p>От <i>@reviews[i].UserID</i></p>
+                        </div>
+                        <div class="ReviewBody">
+                            <p class="ReviewBodyText">@reviews[i].Review</p>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            <button class="WriteReview">Написать обзор</button>
+
+        </div>
+    </div>
+</main>

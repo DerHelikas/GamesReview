@@ -1,0 +1,54 @@
+﻿@page "/404/{TheReasonOfException?}"
+
+<PageTitle>404</PageTitle>
+
+@using System.Text.RegularExpressions;
+@code {
+    [Parameter]
+    public string TheReasonOfException { get; set; }
+    public string SubjectOfException, Message;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Match regex = Regex.Match(TheReasonOfException, @"^.+_(.+)");
+
+        if (regex.Success)
+        {
+            if (TheReasonOfException.StartsWith("GameNotFound_"))
+            {
+                Message = "Данной игры в библиотеки нет";
+                SubjectOfException = $"ID:{regex.Groups[1].Value}";
+            }
+        }
+        else
+        {
+            Message = "Ой! Даже причина ошибки указана не верно или она не обработанна!";
+            SubjectOfException = "(ಠ ͜ ಠ)";
+        }
+
+    }
+
+
+}
+
+<head>
+    <title>Ups... @TheReasonOfException</title>
+
+    <link rel="stylesheet" href="/css/404.css" />
+</head>
+
+
+<main>
+
+    <h3>(๑´• .̫ •ू`๑)</h3>
+    <h2>Упс... вы зашли не туда</h2>
+    <h3>HTTP 404</h3>
+
+    <hr>
+    <div class="MessageHolder">
+        <h4>@Message</h4>
+        <br />
+        <h4>@SubjectOfException</h4>
+    </div>
+
+</main>
